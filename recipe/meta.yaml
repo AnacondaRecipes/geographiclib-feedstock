@@ -11,16 +11,18 @@ source:
   sha256: f7f41c85dc3e1c2d3d935ec86660dc3b2c848c83e17f9a9e51ba9d5146a15859
 
 build:
+  skip: true  # [py<3.7]
   number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vvv
 
 requirements:
   host:
-    - python >=3.7
+    - python
     - pip
+    - setuptools
+    - wheel
   run:
-    - python >=3.7
+    - python
 
 test:
   imports:
@@ -36,10 +38,9 @@ test:
 about:
   home: https://github.com/geographiclib/geographiclib-python
   license: MIT
-  license_file: LICENSE.txt
+  license_file: LICENSE
   license_family: MIT
   summary: The geodesic routines from GeographicLib
-
   description: |
     This implements algorithms for geodesics (Karney, 2013) for solving
     the direct and inverse problems for an ellipsoid of revolution.
