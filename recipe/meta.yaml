@@ -1,14 +1,13 @@
 {% set name = "geographiclib" %}
-{% set version = "2.0" %}
-
+{% set version = "2.1" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/geographiclib-{{ version }}.tar.gz
-  sha256: f7f41c85dc3e1c2d3d935ec86660dc3b2c848c83e17f9a9e51ba9d5146a15859
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/geographiclib-{{ version }}.tar.gz
+  sha256: 6a6545e6262d0ed3522e13c515713718797e37ed8c672c31ad7b249f372ef108
 
 build:
   skip: true  # [py<3.7]
@@ -19,8 +18,7 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
-    - wheel
+    - setuptools >=42
   run:
     - python
 
